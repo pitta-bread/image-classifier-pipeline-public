@@ -1,7 +1,10 @@
 import functions_framework
+import tempfile
+from google.cloud import storage
+
 
 @functions_framework.http
-def hello_get(request):
+def main(request):
     """HTTP Cloud Function.
     Args:
         request (flask.Request): The request object.
@@ -15,4 +18,26 @@ def hello_get(request):
         Functions, see the `Writing HTTP functions` page.
         <https://cloud.google.com/functions/docs/writing/http#http_frameworks>
     """
-    return 'Hello World!'
+
+    # get the os tempdir
+    tmpdir = tempfile.gettempdir()
+
+    # create google cloud storage client
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket("home-assistant-pb96-tapo")
+
+    # get the most recent file from the bucket
+    blobs = bucket.list_blobs(prefix="copper_cam")
+    most_recent = max(blobs, key=lambda x: x.updated)
+    most_recent.download_to_filename("most_recent.jpg")
+
+    message = request.get_json().get('message', None)
+
+    # if the message is present, 
+    if message is not None:
+        
+
+    return 'Failure - invalid message'
+
+
+print(main(None))
