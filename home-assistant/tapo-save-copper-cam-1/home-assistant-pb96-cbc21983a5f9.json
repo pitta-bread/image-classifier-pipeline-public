@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "home-assistant-pb96",
+  "private_key_id": "cbc21983a5f9505ee22d59a25557491df113adc9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC+xi+rXPnQzcwr\n/q1QNA6usaUvZ9NTPrx1HF+85K28ZWV+MoHc4XIA+kFT+bHx8BnqA/WbcQp0aevh\nL4UL7Plu+24fla7UOeza8dpqHY3SefeJKiJInKwhguS+V8KVwHnslewAs4iPe39W\nfTSyGXjhYe8SBSAYoOtI92U3qgGqQB8jlbgbqoL/QQj/g5WVslA8VKRCJxepEONI\neVOZj03Fh+4c+N8mL8Ez4zmJGt4RCUSdtu0+Y2krV6xcG4q0RccMxCGldyQloXK4\nqMJTWPWP8v9sILGcWxJO2d4fpIYQCTmLgeL5uKrnBg1AIU5q2NTGmBR6KbMGugEM\nJ7I0ZLEnAgMBAAECggEAA/M8l3LEZXNtb9fFJOz/BNT+0511vbqF0nL09IdTpZv/\n3v4SvE0avDRyV9fKvHS5RKQyWLadfc2XqcD/I0ET5R1lqVfDF/ffFKV/XUUhY6NM\n4dUygohj9AmuzNYqXElw/NoZ2eXdxQLMnzDWf32RiDEr7xaWFIx4crlUqjNl9211\nORATynOjZx0qxzBGzZddlYkT3l45OMagGFN6VfFH2Rwxsp6ZcvZCvY0SeWVRxrdJ\nkyfkbnaHUTGh7Fy3m1YSd9LE7W0TE9yhq3ijQqUqnX1pJlxV2EnwiJ+NJ7mFef7F\nJRB69Nsbeqvo5RMj/XZkaLuJHGWQpnaIiybjH/WNuQKBgQD+tquxENJfu0UJR7Y5\nmNZMYRdY9Kr48/37CImj1HJv1iQIHquO6L7hCE0Yh9xTxJ4xyynq1DR7MIcdqLac\nU/SMYvgN4yu55cgie1WlhxTYW1jdvAgl8mkaITYjSRALbxLOmz8+2h1SHYaWm6qY\nptVw4kdQ+cbeAvIWhKzxt0B3zQKBgQC/vNiCsqnBx445YNLU8DAe2ivcqzorWNol\nwl//fX9h6trI+egu7nNiYBEf+SvUzyRGPZ3glEKXQKANSXCiJqaJWcOiiAA8m5ae\ngrC792MA+Pu7e17fr0Sh27+xKjauaRNBRxxXR2Z2Ed3e+Dfgec0VM17xKvzzki2Z\nF1bbHh8wwwKBgQDBZTE3X+5bgXUJdsmFMeaEV7PCdwLZw2g0EmdvXP8GqzDweVkJ\nSO6lLghbd8xyTfdPF1LcWgL/BfmRK2h7icNEVGDDKpkorK8ofzyoUcgh/jmbIgmN\nxmDG1jCk2fS0ucEt3fJHZpScpI5sDAWbohCthSFg+kVkjBgDwPkPDnSEgQKBgQC2\naqWWWwKUwRW30z1ip40wnSLj0+gIu4T4LaCFg1GAyB8U3GYg2G3gZ0ODpt0jn1uE\nlDSzKHreSfa8DWXib2E8BbHR3RBUmTZIYlBg1HFVyIw/B5XwvGBQmbAbjuztLDzM\neyokg2Kg7EipTIBkyZzrEa+/RMXZufY103WoDFViXwKBgAQwsYyLyuLa+IuhAexA\n9fPibhG/vKB9tsksWqqXZk4JmQL8+X3oEZvU0mr6/ada/IaiP8gwrHeP8C9o/JE3\nBX4lt+XaSY0S+XpkpLRk9L95BMWp9pFFwhZtX9P7gf7Z/mSKi0nuJY6T+k13LmK5\nnLXKrRW/CRyq23GueHRvFo42\n-----END PRIVATE KEY-----\n",
+  "client_email": "tapo-saves@home-assistant-pb96.iam.gserviceaccount.com",
+  "client_id": "111362464391749188677",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tapo-saves%40home-assistant-pb96.iam.gserviceaccount.com"
+}
