@@ -1,5 +1,8 @@
 import functions_framework
-import tempfile
+# import tempfile
+import flask
+import json
+from datetime import datetime
 from google.cloud import storage
 
 
@@ -20,24 +23,37 @@ def main(request):
     """
 
     # get the os tempdir
-    tmpdir = tempfile.gettempdir()
+    # tmpdir = tempfile.gettempdir()
 
     # create google cloud storage client
-    storage_client = storage.Client()
+    storage_client = storage.Client(project="home-assistant-pb96")
     bucket = storage_client.get_bucket("home-assistant-pb96-tapo")
 
     # get the most recent file from the bucket
     blobs = bucket.list_blobs(prefix="copper_cam")
     most_recent = max(blobs, key=lambda x: x.updated)
+    # most_recent.download_to_filename(tmpdir + "/" + "most_recent.jpg")
     most_recent.download_to_filename("most_recent.jpg")
 
-    message = request.get_json().get('message', None)
+    message = json.loads(request.data).get('message')
 
-    # if the message is present, 
+    # if the message is present, do the needed
     if message is not None:
-        
+        timestamp = str(int(round(datetime.utcnow().timestamp(), 0)))
+        new_blob = bucket.blob(
+            "main-dataset/" +
+            message + "/"
+            "relabel" +
+            "_" +
+            timestamp
+            )
+        new_blob.upload_from_filename("most_recent.jpg")
+        print("GCS upload complete")
+        return f'Success - message: {message}'
 
     return 'Failure - invalid message'
 
 
-print(main(None))
+request = flask.Request(environ={'REQUEST_METHOD': 'POST'})
+request.data = '{"message": "class_bed"}'
+print(main(request))
