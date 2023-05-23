@@ -55,5 +55,5 @@ def main(request):
 
 
 request = flask.Request(environ={'REQUEST_METHOD': 'POST'})
-request.data = '{"message": "class_bed"}'
+request.data = json.dumps({"message": "class_bed"}) # type: ignore
 print(main(request))
