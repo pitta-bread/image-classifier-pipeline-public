@@ -2,6 +2,7 @@ from google.cloud import storage
 from ml_pipeline.data_processing.x2_augment import augment_2x
 import datetime
 import os
+import shutil
 
 
 # download all the files in the bucket with the prefix main-dataset
@@ -54,7 +55,7 @@ def augment_download_2x(source_folder: str):
     # copy all the files from the source folder to the destination folder, windows
     for name in ["bed", "missing", "rug", "somewhere"]:
         for file in os.listdir(f"{source_folder}/class_{name}"):
-            os.system(f"copy {source_folder}/class_{name}/{file} {destination_folder}/class_{name}/{file}")
+            shutil.copy(f"{source_folder}/class_{name}/{file}", f"{destination_folder}/class_{name}/{file}")
 
     augment_2x(source_folder, destination_folder)
     return destination_folder
