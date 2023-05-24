@@ -72,7 +72,7 @@ def augment_2x(
     print("class_weights_dict: ", class_weights_dict)
 
     # find the class with the most number of images
-    min_class = min(class_weights_dict, key=class_weights_dict.get)
+    min_class = min(class_weights_dict, key=class_weights_dict.get) # type: ignore
     # print("min_class: ", min_class)
 
     # find the factors by which to multiply the other classes
