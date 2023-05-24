@@ -1,5 +1,5 @@
 from google.cloud import storage
-from data_processing import x2_augment as aug
+from ml_pipeline.data_processing.x2_augment import augment_2x
 import datetime
 import os
 
@@ -38,7 +38,7 @@ def download_from_gcp_all():
         if int(download_progress) != previous_download_progress:
             print(download_progress)
             previous_download_progress = int(download_progress)
-        blob.download_to_filename(f"{destination_folder}/{name}")
+        blob.download_to_filename(f"{destination_folder}/{name}.jpg")
     
     return destination_folder
 
@@ -46,5 +46,10 @@ def download_from_gcp_all():
 # balance and augment x2 the downloaded files
 def augment_download_2x(source_folder: str):
     destination_folder = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
-    aug.augment_2x(source_folder, destination_folder)
+    os.makedirs(destination_folder, exist_ok=True)
+
+    for name in ["bed", "missing", "rug", "somewhere"]:
+        os.makedirs(f"{destination_folder}/class_{name}", exist_ok=True)
+
+    augment_2x(source_folder, destination_folder)
     return destination_folder

@@ -104,7 +104,7 @@ def augment_2x(
     # run the augmentation with saves to the right dir
     for key, value in number_batches_dict.items():
         augmentation = aug.Augmentation(
-            data_directory=data_directory,
+            data_directory=source_folder,
             output_dir=f"{output_folder}/{class_strings[key]}"
         )
         augmentation.batch_size = batch_size
@@ -116,8 +116,9 @@ def augment_2x(
             print(f"augmenting for {class_strings[key]}: batch {i+1}")
             augmentation.generator.next()
 
-augment_2x(
-    source_folder=data_directory,
-    output_folder=output_directory,
-    batch_size=batch_size,
-)
+if __name__ == "__main__":
+    augment_2x(
+        source_folder=data_directory,
+        output_folder=output_directory,
+        batch_size=batch_size,
+    )
