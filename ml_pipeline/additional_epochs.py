@@ -1,4 +1,5 @@
 import os
+import datetime
 from tensorflow import keras
 from keras.utils import image_dataset_from_directory
 from keras.callbacks import TensorBoard
@@ -18,7 +19,7 @@ model = keras.models.load_model(path)
 print(model.summary())
 
 # define dataset
-data_directory = "data/augmented-dataset"
+data_directory = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
 dataset, val_dataset = image_dataset_from_directory(
     data_directory,
     batch_size=32,
