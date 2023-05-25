@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf
 import keras_tuner
+import datetime
 from tensorflow import keras
 from keras.utils import image_dataset_from_directory
 from sklearn.utils.class_weight import compute_class_weight
@@ -12,7 +13,7 @@ import ml_pipeline.customCNN as customCNN
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
 # define dataset
-data_directory = "data/augmented-dataset"
+data_directory = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
 dataset, val_dataset = image_dataset_from_directory(
     data_directory,
     batch_size=32,
@@ -119,6 +120,7 @@ tuner = keras_tuner.RandomSearch(
     build_hp_model,
     objective='val_categorical_accuracy',
     max_trials=10,
+    project_name=f'customCNN-{datetime.date.today().strftime("%Y%m%d")}'
 )
 
 # define the callbacks

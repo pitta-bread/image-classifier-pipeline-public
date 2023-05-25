@@ -148,3 +148,6 @@ classify
 .config
 home-assistant/tapo-save-copper-cam-1/home-assistant-pb96-cbc21983a5f9.json
 relabel_api/relabel/most_recent.jpg
+
+# keras tuner project directories
+customCNN*
