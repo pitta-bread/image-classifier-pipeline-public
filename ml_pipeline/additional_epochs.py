@@ -9,7 +9,7 @@ from app.utils import get_first_file_path
 
 
 # config
-epochs = 50
+epochs = 30
 root_path = 'models'
 
 # get the most recent model
