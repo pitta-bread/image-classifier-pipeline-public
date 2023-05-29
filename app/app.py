@@ -22,16 +22,24 @@ def main():
     # get the most recent model
     root_path = os.path.join("models")
     path = get_first_file_path(root_path)[0]
-    model = keras.models.load_model(path)
+
+    # load json and then create the model from it
+    json_file = open(path.replace(".h5", ".json"), 'r')
+    loaded_model_json = json_file.read()
+    json_file.close()
+    model = keras.models.model_from_json(loaded_model_json)
+
+    # load weights into new model
+    model.load_weights(path) # type: ignore
 
     classify_dataset = image_dataset_from_directory(
         "classify",
         batch_size=1,
         image_size=(180, 320),
-        labels=None
+        labels=None # type: ignore
     )
 
-    prediction = model.predict(classify_dataset)
+    prediction = model.predict(classify_dataset) # type: ignore
     print(prediction[0].tolist())
 
     classification = convert_label(prediction[0].tolist())

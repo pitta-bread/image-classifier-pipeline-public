@@ -25,3 +25,11 @@
 **/values.dev.yaml
 LICENSE
 README.md
+
+# ignore all the large unneeded files such as data
+model.png
+data/
+augmented_images.png
+custom*
+logs/
+*.jpg
