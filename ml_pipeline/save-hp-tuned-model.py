@@ -5,9 +5,9 @@ import time, datetime
 tuner = kt.RandomSearch(
     build_hp_model,
     objective='val_categorical_accuracy',
-    max_trials=4,
+    max_trials=10,
     overwrite=False,
-    project_name=f'customCNN-{datetime.date.today().strftime("%Y%m%d")}'
+    project_name='customResNet-2-20230526'
 )
 
 print(tuner.get_best_hyperparameters())
@@ -16,4 +16,4 @@ print(tuner.get_best_hyperparameters())
 model = tuner.get_best_models()[0]
 
 # save the model
-model.save(f"models/model-{int(time.time())}.keras")
+model.save(f"models/9resnet-model-{int(time.time())}.keras")

@@ -7,7 +7,8 @@ from keras.utils import image_dataset_from_directory
 from sklearn.utils.class_weight import compute_class_weight
 from keras.callbacks import TensorBoard
 
-import ml_pipeline.customCNN as customCNN
+import ml_pipeline.customResNet as customResNet
+import ml_pipeline.customResNet as customResNet
 
 # check GPU is available
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
@@ -73,14 +74,20 @@ print(class_weights_dict)
 inputs = keras.Input(shape=(180, 320, 3))
 
 # build the model
-cnn = customCNN.CustomCNN(inputs, 4)
+# cnn = customCNN.CustomCNN(inputs, 4)
+resnet = customResNet.CustomResNet(inputs, 4)
+# cnn = customCNN.CustomCNN(inputs, 4)
+resnet = customResNet.CustomResNet(inputs, 4)
 
 # if desired, we can define some hyperparameters for search
-cnn.hp_dict = {
+resnet.hp_dict = {
+resnet.hp_dict = {
     "conv": {
-        "unit_min": 16,
+        "unit_min": 32,
+        "unit_min": 32,
         "unit_max": 64,
-        "unit_step": 16,
+        "unit_step": 32,
+        "unit_step": 32,
         "kernal_min": 3,
         "kernal_max": 10,
         "kernal_step": 1,
@@ -92,7 +99,8 @@ cnn.hp_dict = {
     },
     "dropout": {
         "min": 0.2,
-        "max": 0.6,
+        "max": 0.5,
+        "max": 0.5,
         "step": 0.1,
     },
 }
@@ -105,10 +113,12 @@ def build_hp_model(hp):
         # plain model
         # outputs=cnn.build_model()
         # with hyperparameter tuning
-        outputs=cnn.build_model(hp=hp)
+        outputs=resnet.build_model(hp=hp)
+        outputs=resnet.build_model(hp=hp)
     )
     model.compile(
-        optimizer=hp.Choice('optimizer', ['adam', 'nadam', 'rmsprop']),
+        optimizer="adam",
+        optimizer="adam",
         loss='categorical_crossentropy',
         metrics=[keras.metrics.CategoricalAccuracy()]
     )
@@ -120,7 +130,7 @@ tuner = keras_tuner.RandomSearch(
     build_hp_model,
     objective='val_categorical_accuracy',
     max_trials=10,
-    project_name=f'customCNN-{datetime.date.today().strftime("%Y%m%d")}'
+    project_name=f'customResNet-2-{datetime.date.today().strftime("%Y%m%d")}',
 )
 
 # define the callbacks
@@ -129,10 +139,13 @@ tensorboard_callback = TensorBoard(log_dir="./logs")
 # search for the best model
 tuner.search(
     dataset,
-    epochs=50,
+    epochs=25,
     validation_data=val_dataset,
     class_weight=class_weights_dict,
-    callbacks=[tensorboard_callback]
+    callbacks=[tensorboard_callback],
+    use_multiprocessing=True,
+    callbacks=[tensorboard_callback],
+    use_multiprocessing=True,
 )
 
 # get the best model
