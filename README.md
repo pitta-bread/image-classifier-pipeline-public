@@ -6,7 +6,7 @@ The pipeline is specifically an example for image classification, with a custom 
 
 A new addition is the ability to quickly relabel images on-the-fly (human-in-the-loop). This can be triggered from smartwatch or phone via HA, with images stored in labelled folders in the cloud.
 
-Thanks and credit to [priya-dwivedi](https://github.com/priya-dwivedi/Deep-Learning/commits?author=priya-dwivedi) for the tutorial on building blocks for the ResNet.
+Thanks and credit to [priya-dwivedi](https://github.com/priya-dwivedi/Deep-Learning/commits?author=priya-dwivedi) for the [tutorial on building blocks for the ResNet](https://github.com/priya-dwivedi/Deep-Learning/blob/master/resnet_keras/Residual_Networks_yourself.ipynb).
 
 ## Details - May 2023
 The pipeline is specifically an example for image classification, with a custom Convolutional Neural Network **(CNN)**. The latest model was trained on ~1000 raw images of dogs within a room, ~3000 after image augmentation is applied. It achieves **79%** accuracy on a balanced test dataset, for a model outputting **4** classes.
