@@ -8,5 +8,6 @@ A new addition is the ability to quickly relabel images on-the-fly (human-in-the
 
 Thanks and credit to [priya-dwivedi](https://github.com/priya-dwivedi) for the [tutorial on building blocks for the ResNet](https://github.com/priya-dwivedi/Deep-Learning/blob/master/resnet_keras/Residual_Networks_yourself.ipynb).
 
+## History
 ### *Details - May 2023*
 *The pipeline is specifically an example for image classification, with a custom Convolutional Neural Network **(CNN)**. The latest model was trained on ~1000 raw images of dogs within a room, ~3000 after image augmentation is applied. It achieves **79%** accuracy on a balanced test dataset, for a model outputting **4** classes.*
