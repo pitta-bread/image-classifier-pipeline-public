@@ -34,7 +34,7 @@ def main(event, context):
         "content-type": "application/json",
     }
 
-    gcs_cred_file = "home-assistant-pb96-cbc21983a5f9.json"
+    gcs_cred_file = "home-assistant-pb96-5987a3dcb0dd.json"
     gcs_creds = service_account.Credentials.from_service_account_file(
         gcs_cred_file
     )
