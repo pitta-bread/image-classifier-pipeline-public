@@ -8,7 +8,6 @@ from sklearn.utils.class_weight import compute_class_weight
 from keras.callbacks import TensorBoard
 
 import ml_pipeline.customResNet as customResNet
-import ml_pipeline.customResNet as customResNet
 
 # check GPU is available
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
@@ -76,17 +75,12 @@ inputs = keras.Input(shape=(180, 320, 3))
 # build the model
 # cnn = customCNN.CustomCNN(inputs, 4)
 resnet = customResNet.CustomResNet(inputs, 4)
-# cnn = customCNN.CustomCNN(inputs, 4)
-resnet = customResNet.CustomResNet(inputs, 4)
 
 # if desired, we can define some hyperparameters for search
 resnet.hp_dict = {
-resnet.hp_dict = {
     "conv": {
         "unit_min": 32,
-        "unit_min": 32,
         "unit_max": 64,
-        "unit_step": 32,
         "unit_step": 32,
         "kernal_min": 3,
         "kernal_max": 10,
@@ -99,7 +93,6 @@ resnet.hp_dict = {
     },
     "dropout": {
         "min": 0.2,
-        "max": 0.5,
         "max": 0.5,
         "step": 0.1,
     },
@@ -114,10 +107,8 @@ def build_hp_model(hp):
         # outputs=cnn.build_model()
         # with hyperparameter tuning
         outputs=resnet.build_model(hp=hp)
-        outputs=resnet.build_model(hp=hp)
     )
     model.compile(
-        optimizer="adam",
         optimizer="adam",
         loss='categorical_crossentropy',
         metrics=[keras.metrics.CategoricalAccuracy()]
@@ -142,8 +133,6 @@ tuner.search(
     epochs=25,
     validation_data=val_dataset,
     class_weight=class_weights_dict,
-    callbacks=[tensorboard_callback],
-    use_multiprocessing=True,
     callbacks=[tensorboard_callback],
     use_multiprocessing=True,
 )
