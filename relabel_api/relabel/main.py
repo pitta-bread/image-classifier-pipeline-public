@@ -54,6 +54,6 @@ def main(request):
     return 'Failure - invalid message'
 
 
-request = flask.Request(environ={'REQUEST_METHOD': 'POST'})
-request.data = json.dumps({"message": "class_bed"}) # type: ignore
-print(main(request))
+# request = flask.Request(environ={'REQUEST_METHOD': 'POST'})
+# request.data = json.dumps({"message": "class_bed"}) # type: ignore
+# print(main(request))
