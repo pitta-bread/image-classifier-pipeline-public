@@ -5,7 +5,7 @@ import time, datetime
 tuner = kt.RandomSearch(
     build_hp_model,
     objective='val_categorical_accuracy',
-    max_trials=10,
+    max_trials=5,
     overwrite=False,
     project_name='customResNet-2-20230526'
 )
