@@ -5,9 +5,9 @@ import datetime
 
 
 # config
-sample_size = 400
+sample_size = 500
 week_or_day = "week"
-destination_directory = "data/main-dataset"
+destination_directory = "data/labeling-20230606"
 
 # get x random files from the dataset folder
 files = glob.glob(

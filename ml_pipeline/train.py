@@ -13,8 +13,8 @@ import ml_pipeline.customResNet as customResNet
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
 # define dataset
-# data_directory = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
-data_directory = f"data/all-main-gcp-augmented2x-20230526"
+data_directory = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
+# data_directory = f"data/all-main-gcp-augmented2x-20230526"
 dataset, val_dataset = image_dataset_from_directory(
     data_directory,
     batch_size=32,
@@ -81,10 +81,10 @@ resnet = customResNet.CustomResNet(inputs, 4)
 resnet.hp_dict = {
     "conv": {
         "unit_min": 32,
-        "unit_max": 64,
+        "unit_max": 128,
         "unit_step": 32,
         "kernal_min": 3,
-        "kernal_max": 10,
+        "kernal_max": 6,
         "kernal_step": 1,
     },
     "dense": {
@@ -93,7 +93,7 @@ resnet.hp_dict = {
         "step": 1,
     },
     "dropout": {
-        "min": 0.2,
+        "min": 0.3,
         "max": 0.5,
         "step": 0.1,
     },
@@ -121,9 +121,9 @@ def build_hp_model(hp):
 tuner = keras_tuner.RandomSearch(
     build_hp_model,
     objective='val_categorical_accuracy',
-    max_trials=10,
-    # project_name=f'customResNet-2-{datetime.date.today().strftime("%Y%m%d")}',
-    project_name=f'customResNet-2-20230526',
+    max_trials=5,
+    project_name=f'customResNet-1-{datetime.date.today().strftime("%Y%m%d")}',
+    # project_name=f'customResNet-2-20230526',
 )
 
 # define the callbacks
@@ -132,7 +132,7 @@ tensorboard_callback = TensorBoard(log_dir="./logs")
 # search for the best model
 tuner.search(
     dataset,
-    epochs=25,
+    epochs=30,
     validation_data=val_dataset,
     class_weight=class_weights_dict,
     callbacks=[tensorboard_callback],
