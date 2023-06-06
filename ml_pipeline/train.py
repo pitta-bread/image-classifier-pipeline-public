@@ -13,8 +13,8 @@ import ml_pipeline.customResNet as customResNet
 print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
 
 # define dataset
-# data_directory = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
-data_directory = f"data/all-main-gcp-augmented2x-20230526"
+data_directory = f"data/all-main-gcp-augmented2x-{datetime.date.today().strftime('%Y%m%d')}"
+# data_directory = f"data/all-main-gcp-augmented2x-20230526"
 dataset, val_dataset = image_dataset_from_directory(
     data_directory,
     batch_size=32,

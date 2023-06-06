@@ -7,7 +7,7 @@ tuner = kt.RandomSearch(
     objective='val_categorical_accuracy',
     max_trials=5,
     overwrite=False,
-    project_name='customResNet-2-20230526'
+    project_name='customResNet-1-20230606'
 )
 
 destination = "models"
@@ -20,8 +20,8 @@ model = tuner.get_best_models()[0]
 # save the model
 # serialize model to JSON
 model_json = model.to_json()
-with open(f"{destination}/8-weights-resnet-model-{int(time.time())}.json", "w") as json_file:
+with open(f"{destination}/7-weights-resnet-model-{int(time.time())}.json", "w") as json_file:
     json_file.write(model_json)
 
-model.save_weights(f"{destination}/8-weights-resnet-model-{int(time.time())}.h5")
+model.save_weights(f"{destination}/7-weights-resnet-model-{int(time.time())}.h5")
 print("Saved model to disk")
